@@ -1,5 +1,5 @@
 <template>
-    <div class="page employees-list">
+    <div class="page employees-list" >
         <h1 class="employees-list__header">Employees</h1>
         <div v-if="loading" class="employees-list__loading">Loading...</div>
         <table v-else class="employees-list__list">
@@ -9,29 +9,53 @@
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Edycja</th>
             </tr>
-            <tr v-for="employee in employees" class="employees-list__list-row">
+            <tr v-bind:key="employee.id" v-for="employee in employees" class="employees-list__list-row">
                 <td>{{employee.id}}</td>
-                <td>{{employee.name}}</td>
-                <td>{{employee.address.street}} {{employee.address.suite}} {{employee.address.city}}</td>
-                <td>{{employee.phone}}</td>
-                <td><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></td>
+                <td>
+                    <input type="text" name="name" v-if="employeeToEdit==employee.id" :placeholder='employee.name' />
+                    <div v-else> {{employee.name}}</div>
+                </td>
+                <td>
+                    <input type="text" name="street" v-if="employeeToEdit==employee.id" :placeholder='employee.address.street'/>
+                    <input type="text" name="suite" v-if="employeeToEdit==employee.id" :placeholder='employee.address.suite' />
+                    <input type="text" name="city" v-if="employeeToEdit==employee.id" :placeholder='employee.address.city' />
+                    <div v-else>{{employee.address.street}} {{employee.address.suite}} {{employee.address.city}}</div>
+                </td>
+                <td>
+                    <input type="text" name="phone" v-if="employeeToEdit==employee.id" :placeholder='employee.phone' />
+                    <div v-else>{{employee.phone}}</div>
+                </td>
+                <td>
+                    <input type="text" name="email" v-if="employeeToEdit==employee.id" :placeholder='employee.email'  />
+                    <div v-else><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></div>
+                <td>
+                    <EditButton v-if="employeeToEdit!=employee.id" v-bind="employee" v-on:edit-employee="editEmployee"/>
+                    <button v-else v-on:click=saveData(employee.id)>save</button>
+                </td>
             </tr>
-        </table>
+        </table>        
     </div>
 </template>
 <script>
     import axios from 'axios';
+    import EditButton from "../components/EditButton.vue" 
 
     export default {
         data() {
-            return {
+            return {               
                 loading: false,
+                employeeToEdit: null,
                 employees: [],
             }
         },
+        components:{
+            EditButton,
+        },
         created () {
-            this.fetchData()
+            this.fetchData()            
+            
         },
         watch: {
             '$route': 'fetchData'
@@ -46,8 +70,44 @@
                     })
                     .finally(() => {
                         this.loading = false;
+                        
                     })
-            }
+            },    
+            editEmployee(id){
+                this.employeeToEdit = id;                
+            },
+            saveData(id){
+                this.loading = true;
+
+                axios({
+                    method: 'put',
+                    url: 'https://jsonplaceholder.typicode.com/users/'+id,
+                    data: {
+                        name : document.getElementsByName("name")[0].value,
+                        street : document.getElementsByName("street")[0].value,
+                        suite : document.getElementsByName("suite")[0].value,
+                        city : document.getElementsByName("city")[0].value,
+                        phone : document.getElementsByName("phone")[0].value,
+                        email : document.getElementsByName("email")[0].value,
+                    }
+                }).then((response)=>{  
+                    var index = this.employees.findIndex((employee)=>{
+                        return employee.id == id;
+                    });                           
+                    this.employees[index].name = response.data.name;
+                    this.employees[index].address.street = response.data.street;
+                    this.employees[index].address.suite=response.data.suite;
+                    this.employees[index].address.city=response.data.city;
+                    this.employees[index].phone=response.data.phone;
+                    this.employees[index].email=response.data.email;
+
+                }).finally(()=>{
+                    this.loading = false;
+                    this.employeeToEdit = null;
+                        
+                });
+
+            },
         }
     };
 

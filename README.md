@@ -18,3 +18,13 @@ Wybierz 3 dowolne zadania i je zrealizuj.
 1. Każdy task wypushuj do mastera swojego repozytorium ze squashem i odpowiednim opisem w języku angielskim.
 1. Testowe API: https://github.com/typicode/jsonplaceholder#how-to
 
+
+
+##moje uwagi
+#w zadaniu 1 stworzylem komponent EditButton
+
+#w zadaniu 2 dodalem funkcjonalność, zdecydowalem się na implementacje edycji pracownika w wierszu zamiast na nowym widoku.
+Powodem tego był fakt ze widok EmployeeList pobiera dane z momencie wczytania, wiec dane zapisane na innym widoku nie byłyby widoczne ponieważ jsonplaceholder nie ma faktycznej pamięci. Zaimplementowanie takiego rozwiązania wymagaloby przeniesienia 
+stanu aplikacji poziom wyzej w drzewie komponentów przekazywanie go propsami w dół, a myślę ze celem zadania nie jest przebudowa całego projektu.
+
+#w zadaniu 4 stworzylem menu które układa się pionowo w wypadku wykrycia przeglądarki mobilnej, taka była treść zadania
