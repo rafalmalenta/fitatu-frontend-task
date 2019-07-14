@@ -9,19 +9,22 @@
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Email</th>
+                <th>Edycja</th>
             </tr>
-            <tr v-for="employee in employees" class="employees-list__list-row">
+            <tr v-bind:key="employee.id" v-for="employee in employees" class="employees-list__list-row">
                 <td>{{employee.id}}</td>
                 <td>{{employee.name}}</td>
                 <td>{{employee.address.street}} {{employee.address.suite}} {{employee.address.city}}</td>
                 <td>{{employee.phone}}</td>
                 <td><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></td>
+                <td><EditButton /></td>
             </tr>
         </table>
     </div>
 </template>
 <script>
     import axios from 'axios';
+    import EditButton from "../components/EditButton.vue" 
 
     export default {
         data() {
@@ -29,6 +32,9 @@
                 loading: false,
                 employees: [],
             }
+        },
+        components:{
+            EditButton,
         },
         created () {
             this.fetchData()
