@@ -15,7 +15,23 @@ const router = new VueRouter({
             path: '/list',
             name: 'employeesList',
             component: EmployeesList,
-        }
+        },
+        {
+            path: '/fakeview1',
+            name: 'employeesList2',
+            component: EmployeesList,
+        },
+        {
+            path: '/fakeview2',
+            name: 'employeesList3',
+            component: EmployeesList,
+        },
+        {
+            path: '/fakeview3',
+            name: 'employeesList5',
+            component: EmployeesList,
+        },
+
     ],
 });
 
