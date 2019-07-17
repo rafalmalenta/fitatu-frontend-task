@@ -1,12 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
-//import HelloWorld from '@/components/HelloWorld.vue'
+import EditButton from '@/components/EditButton.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    //const msg = 'new message'
-    //const wrapper = shallowMount(HelloWorld, {
-      //propsData: { msg }
-    //})
-    //expect(wrapper.text()).toMatch(msg)
+describe('EditButton.vue', () => {
+  it('zawiera button', () => {    
+    const wrapper = shallowMount(EditButton, {      
+    })
+    expect(wrapper.contains('button')).toBe(true)
   })
 })

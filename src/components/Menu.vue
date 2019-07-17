@@ -29,13 +29,7 @@ export default {
             
         }
     },
-    methods:{  
-        cacheDOM(){
-            //this.hamburger = document.getElementsByClassName("hamburger"); 
-
-            //console.log(this.hamburger)
-
-        },
+    methods:{          
         toggleColapse(){
             this.isColapsed = !this.isColapsed;
             console.log()
@@ -61,9 +55,7 @@ export default {
         
     },
     created(){
-        this.detectmob();  
-        this.cacheDOM(); 
-
+        this.detectmob();         
     },   
     
 }
