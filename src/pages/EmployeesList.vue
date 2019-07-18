@@ -31,7 +31,7 @@
                     <input type="text" name="email" v-if="employeeToEdit==employee.id" :placeholder='employee.email'  />
                     <div v-else><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></div>
                 <td>
-                    <EditButton v-if="employeeToEdit!=employee.id" v-bind="employee" v-on:edit-employee="editEmployee"/>
+                    <EditButton v-if="employeeToEdit!=employee.id" v-bind="employee" v-on:editEmployee="editEmployee"/>
                     <button v-else v-on:click=saveData(employee.id)>save</button>
                 </td>
             </tr>

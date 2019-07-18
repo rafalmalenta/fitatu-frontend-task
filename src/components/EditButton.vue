@@ -1,5 +1,5 @@
 <template>
-    <button v-on:click="$emit('edit-employee',id)">Edytuj</button>
+    <button v-on:click="handleClick">Edytuj</button>
 </template>
 <script>
 export default {
@@ -7,6 +7,11 @@ export default {
     props:{ 
         id : Number 
     },
+    methods:{
+        handleClick(){
+            this.$emit('editEmployee',this.id)
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

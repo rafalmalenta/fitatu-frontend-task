@@ -31,11 +31,7 @@
     "testMatch": [
       "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
     ],
-    "testURL": "http://localhost/",
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ]
+    "testURL": "http://localhost/"
   },
   "author": "Fitatu",
   "license": "ISC",
@@ -47,6 +43,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
