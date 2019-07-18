@@ -32,7 +32,10 @@
                     <div v-else><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></div>
                 <td>
                     <EditButton v-if="employeeToEdit!=employee.id" v-bind="employee" v-on:editEmployee="editEmployee"/>
-                    <button v-else v-on:click=saveData(employee.id)>save</button>
+                    <div v-else class="buttonWrapper">
+                        <button v-on:click=saveData(employee.id)>Save</button>
+                        <button v-on:click='employeeToEdit=null'>Cancel</button>
+                    </div>
                 </td>
             </tr>
         </table>        
@@ -113,6 +116,14 @@
 
 </script>
 <style lang="scss" scoped>
+    .buttonWrapper
+    {
+        width: 100%;
+    }
+    button{
+        width: 100%;
+    }
+
     .employees-list {
         &__header {
             font-size: 20px;

@@ -25,7 +25,7 @@ export default {
         return {
             isMobile : true,
             isColapsed: true,
-            hamburger:null,
+            hamburger: null,
             
         }
     },
@@ -55,7 +55,7 @@ export default {
         
     },
     created(){
-        this.detectmob();         
+        //this.detectmob();         
     },   
     
 }
