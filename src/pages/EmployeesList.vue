@@ -66,17 +66,19 @@
             this.fetchData(),
             console.log(this.rowOrForm)            
             
-        },
+        },       
         props: ['rowOrForm'],
         
         watch: {
             //'$route': 'fetchData',
-            '$route': 'poka'
+            '$route': 'clear'
 
         },
         methods: {
-            poka(){
-                console.log(this.rowOrForm)
+            clear(){
+                this.employeeToEdit = null;
+                console.log(this.employeeToEdit)
+
             },
             formularz(id){
                 this.$router.push({ name: 'formularz', params: { userId: id } })
@@ -92,7 +94,8 @@
                         this.loading = false;
                         
                     })
-            },    
+            },           
+
             editEmployee(id){
                 this.employeeToEdit = id;                
             },
