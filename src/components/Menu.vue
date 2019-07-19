@@ -2,9 +2,9 @@
     <nav class="navbar">  
   
     <ul class="menu" v-bind:class="{'mobile':isMobile, 'colapsed':isColapsed}" >
-        <li class="menu__item"><router-link to="fakeview1">fakeview1</router-link></li>
-        <li class="menu__item"><router-link to="fakeview2">fakeview2</router-link></li>
-        <li class="menu__item"><router-link to="fakeview3">fakeview3</router-link></li>    
+        <li class="menu__item"><router-link to="/list/row">Edycja w wierszu</router-link></li>
+        <li class="menu__item"><router-link to="/list/form">Edycja w formularzu</router-link></li>
+        <li class="menu__item"><router-link to="/fakeview3">fakeview3</router-link></li>    
         <li >
             <div class="hamburger" v-on:click="toggleColapse()" >
                 <div id="bar1"></div>

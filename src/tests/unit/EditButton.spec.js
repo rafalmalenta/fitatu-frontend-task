@@ -7,9 +7,7 @@ describe('EditButton.vue', () => {
     const wrapper = shallowMount(EditButton, {})
     expect(wrapper.contains('button')).toBe(true)
   })
-})
-
-describe('EditButton.vue', () => {
+  
   it('button na click emituje wlasciwe propsy', () => {    
     const wrapper = mount(EditButton, {
       propsData:{
@@ -19,7 +17,8 @@ describe('EditButton.vue', () => {
     wrapper.find('button').trigger('click')    
     expect(wrapper.emitted().editEmployee[0]).toEqual([2])
   })
-})
 
+
+})
 
 

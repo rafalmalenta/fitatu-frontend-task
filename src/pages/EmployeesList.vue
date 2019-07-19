@@ -1,7 +1,7 @@
 <template>
-    <div class="page employees-list" >
+    <div v-if="rowOrForm == 'form'||rowOrForm=='row'" class="page employees-list" >
         <h1 class="employees-list__header">Employees</h1>
-        <div v-if="loading" class="employees-list__loading">Loading...</div>
+        <div v-if="loading" class="employees-list__loading">Loading...</div>        
         <table v-else class="employees-list__list">
             <tr class="employees-list__list-header">
                 <th>id</th>
@@ -31,19 +31,24 @@
                     <input type="text" name="email" v-if="employeeToEdit==employee.id" :placeholder='employee.email'  />
                     <div v-else><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></div>
                 <td>
-                    <EditButton v-if="employeeToEdit!=employee.id" v-bind="employee" v-on:editEmployee="editEmployee"/>
-                    <div v-else class="buttonWrapper">
-                        <button v-on:click=saveData(employee.id)>Save</button>
-                        <button v-on:click='employeeToEdit=null'>Cancel</button>
+                    <div v-if="rowOrForm=='row'">
+                        <EditButton v-if="employeeToEdit!=employee.id" v-bind="employee" v-on:editEmployee="editEmployee"/>
+                        <div v-else class="buttonWrapper">
+                            <button class="save" v-on:click=saveData(employee.id)>Save</button>
+                            <button class="cancel" v-on:click='employeeToEdit=null'>Cancel</button>
+                        </div>
                     </div>
+                    <button v-on:click="formularz(employee.id)" v-else-if="rowOrForm=='form'">Edycja</button>    
                 </td>
             </tr>
         </table>        
     </div>
+    <Component404 v-else/>
 </template>
 <script>
     import axios from 'axios';
-    import EditButton from "../components/EditButton.vue" 
+    import EditButton from "../components/EditButton.vue";
+    import Component404 from "../components/Component404"     
 
     export default {
         data() {
@@ -55,15 +60,27 @@
         },
         components:{
             EditButton,
+            Component404
         },
         created () {
-            this.fetchData()            
+            this.fetchData(),
+            console.log(this.rowOrForm)            
             
         },
+        props: ['rowOrForm'],
+        
         watch: {
-            '$route': 'fetchData'
+            //'$route': 'fetchData',
+            '$route': 'poka'
+
         },
         methods: {
+            poka(){
+                console.log(this.rowOrForm)
+            },
+            formularz(id){
+                this.$router.push({ name: 'formularz', params: { userId: id } })
+            },
             fetchData () {
                 this.loading = true;
 
@@ -116,6 +133,14 @@
 
 </script>
 <style lang="scss" scoped>
+    button.cancel{
+        background-color: red;
+        border-radius: 12px
+    }
+    button.save{
+        background-color: green;
+        border-radius: 12px
+    }
     .buttonWrapper
     {
         width: 100%;

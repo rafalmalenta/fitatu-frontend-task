@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import EmployeesList from '@pages/EmployeesList';
+import Form from '@pages/Form';
 
 Vue.use(VueRouter);
 
@@ -9,17 +10,19 @@ const router = new VueRouter({
         {
             path: '/',
             name: 'index',
-            redirect: 'list',
+            redirect: 'list/row',
         },
         {
-            path: '/list',
-            name: 'employeesList',
+            path: '/list/:rowOrForm',
+            name: 'list',
+            props: true,
             component: EmployeesList,
         },
         {
-            path: '/fakeview1',
-            name: 'employeesList2',
-            component: EmployeesList,
+            path: '/formularz',
+            props: true,
+            name: 'formularz',
+            component: Form,
         },
         {
             path: '/fakeview2',
