@@ -29,7 +29,7 @@ stanu aplikacji poziom wyzej w drzewie komponentów przekazywanie go propsami w 
 (edit: wykonalem jednak oba rozwiązania tworzac store i przenoszac fetch wyżej w drzewie komponentów wstawilem wybor rozwiązania do menu z następnego punktu)
 
 #w zadaniu 4 stworzylem menu które układa się pionowo w wypadku wykrycia przeglądarki mobilnej, taka była treść zadania
-# dodalem jest vue-jest babel-jest i 1 test
+#dodalem jest vue-jest babel-jest i 1 test
 
 npm run test - uruchamia testy
 
