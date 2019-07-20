@@ -35,7 +35,7 @@
                         <EditButton v-if="employeeStore.employeeToEdit!=employee.id" v-bind="employee" v-on:editEmployee="editEmployee"/>
                         <div v-else class="buttonWrapper">
                             <button class="save" v-on:click=saveData(employee.id)>Save</button>
-                            <button class="cancel" v-on:click='employeeToEdit=null'>Cancel</button>
+                            <button class="cancel" v-on:click='employeeStore.employeeToEdit=null'>Cancel</button>
                         </div>
                     </div>
                     <button v-on:click="formularz(employee)" v-else-if="rowOrForm=='form'">Edycja</button>    
@@ -54,25 +54,18 @@
     export default {
         data() {
             return {      
-                employeeStore : EmployeeStore.data,
-                //loading : EmployeeStore.data.loading
+                employeeStore : EmployeeStore.data,               
             }
         },
         components:{
             EditButton,
             Component404
         },
-        //created () {
-            //this.fetchData()
-            //console.log(this.rowOrForm)            
-            
-       // },       
+       
         props: ['rowOrForm'],
         
-        watch: {
-            //'$route': 'fetchData',
+        watch: {            
             '$route': 'clear'
-
         },
         methods: {
             clear(){
@@ -80,11 +73,7 @@
             },
             formularz(employee){
                 this.$router.push({ name: 'formularz', params: { employee } })
-            },
-            fetchData(){  
-                EmployeeStore.methods.fetchData();               
-                },                     
-
+            },  
             editEmployee(id){
                 EmployeeStore.methods.editEmployee(id);                
             },
