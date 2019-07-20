@@ -26,7 +26,11 @@ Wybierz 3 dowolne zadania i je zrealizuj.
 #w zadaniu 2 dodalem funkcjonalność, zdecydowalem się na implementacje edycji pracownika w wierszu zamiast na nowym widoku.
 Powodem tego był fakt ze widok EmployeeList pobiera dane z momencie wczytania, wiec dane zapisane na innym widoku nie byłyby widoczne ponieważ jsonplaceholder nie ma faktycznej pamięci. Zaimplementowanie takiego rozwiązania wymagaloby przeniesienia 
 stanu aplikacji poziom wyzej w drzewie komponentów przekazywanie go propsami w dół, a myślę ze celem zadania nie jest przebudowa całego projektu.
-(Edit: nie rozumialem lifecycle. wystarczy wyrzucic watchera i moge zaimplementowac oba rozwiazania i )
+(edit: wykonalem jednak oba rozwiązania tworzac store i przenoszac fetch wyżej w drzewie komponentów wstawilem wybor rozwiązania do menu z następnego punktu)
 
 #w zadaniu 4 stworzylem menu które układa się pionowo w wypadku wykrycia przeglądarki mobilnej, taka była treść zadania
 # dodalem jest vue-jest babel-jest i 1 test
+
+npm run test - uruchamia testy
+
+jeżeli nie chcesz pobierac repozytorium oklikaj sobie projekt na moim hostingu http://fitatu.rafalmalenta.usermd.net
