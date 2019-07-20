@@ -31,7 +31,7 @@
             align-items: center;
             justify-content: center;
 
-            position: fixed;
+            //position: fixed;
             z-index: 11;
             height: inherit;
             width: 100%;

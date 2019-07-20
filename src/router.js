@@ -27,12 +27,12 @@ const router = new VueRouter({
         {
             path: '/fakeview2',
             name: 'employeesList3',
-            component: EmployeesList,
+            component: Form,
         },
         {
             path: '/fakeview3',
             name: 'employeesList5',
-            component: EmployeesList,
+            component: Form,
         },
 
     ],

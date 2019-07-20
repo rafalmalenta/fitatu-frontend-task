@@ -12,13 +12,24 @@
     import Header from '@components/Header';
     import Footer from '@components/Footer';
     import Menu from '@components/Menu';
+    import EmployeeStore from "../EmployeeStore.js"
     
     export default {
         components: {
             Header,
             Footer,
             Menu
-        }
+        },
+        methods:{
+            fetchData(){  
+                EmployeeStore.methods.fetchData();               
+                },  
+        },
+        created () {
+            this.fetchData()
+            console.log(this.rowOrForm)            
+            
+        },       
     };
 </script>
 <style lang="scss" scoped>

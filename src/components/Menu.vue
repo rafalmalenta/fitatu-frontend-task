@@ -1,6 +1,5 @@
 <template>
-    <nav class="navbar">  
-  
+    <nav class="navbar">    
     <ul class="menu" v-bind:class="{'mobile':isMobile, 'colapsed':isColapsed}" >
         <li class="menu__item"><router-link to="/list/row">Edycja w wierszu</router-link></li>
         <li class="menu__item"><router-link to="/list/form">Edycja w formularzu</router-link></li>
@@ -61,6 +60,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
 a{
     transition-duration: 0.8s;    
 }
@@ -111,7 +111,8 @@ li{
     width: 100%;      
     transition-duration: 1s;
     font-size: 22px;
-    overflow: hidden;   
+    overflow: hidden;  
+    
 }
 .menu a{
     text-decoration: none;
