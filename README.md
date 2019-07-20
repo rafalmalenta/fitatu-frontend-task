@@ -29,3 +29,4 @@ stanu aplikacji poziom wyzej w drzewie komponentów przekazywanie go propsami w 
 (Edit: nie rozumialem lifecycle. wystarczy wyrzucic watchera i moge zaimplementowac oba rozwiazania i )
 
 #w zadaniu 4 stworzylem menu które układa się pionowo w wypadku wykrycia przeglądarki mobilnej, taka była treść zadania
+# dodalem jest vue-jest babel-jest i 1 test
