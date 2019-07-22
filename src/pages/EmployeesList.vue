@@ -38,7 +38,7 @@
                             <button class="cancel" v-on:click='employeeStore.employeeToEdit=null'>Cancel</button>
                         </div>
                     </div>
-                    <button v-on:click="formularz(employee)" v-else-if="rowOrForm=='form'">Edycja</button>    
+                    <button v-on:click="formularz(employee)" v-else-if="rowOrForm=='form'">Edit</button>    
                 </td>
             </tr>
         </table>        
@@ -47,8 +47,8 @@
 </template>
 <script>
     import axios from 'axios';
-    import EditButton from "../components/EditButton.vue";
-    import Component404 from "../components/Component404" 
+    import EditButton from "@components/EditButton.vue";
+    import Component404 from "@components/Component404" 
     import EmployeeStore from "../EmployeeStore.js"    
 
     export default {

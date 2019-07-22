@@ -1,5 +1,5 @@
 import axios from 'axios';
-const EmployeeStore={
+var EmployeeStore={
     data:{
         employees: [],
         employeeToEdit: null,
@@ -26,7 +26,7 @@ const EmployeeStore={
             EmployeeStore.data.loading = true;
             console.log(EmployeeStore.data.loading)
                 axios({
-                    method: 'put',
+                    method: 'patch',
                     url: 'https://jsonplaceholder.typicode.com/users/'+id,
                     data: {
                         name : document.getElementsByName("name")[0].value,

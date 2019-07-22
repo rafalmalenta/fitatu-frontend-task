@@ -1,9 +1,10 @@
 <template>
     <nav class="navbar">    
     <ul class="menu" v-bind:class="{'mobile':isMobile, 'colapsed':isColapsed}" >
-        <li class="menu__item"><router-link to="/list/row">Edycja w wierszu</router-link></li>
-        <li class="menu__item"><router-link to="/list/form">Edycja w formularzu</router-link></li>
-        <li class="menu__item"><router-link to="/fakeview3">fakeview3</router-link></li>    
+        <li class="menu__item"><router-link to="/list/row">In row edit</router-link></li>
+        <li class="menu__item"><router-link to="/list/form">In form edit</router-link></li>
+        <li class="menu__item"><router-link to="/fakeview3">fakeview1</router-link></li> 
+        <li class="menu__item"><router-link to="/fakeview3">fakeview2</router-link></li> 
         <li >
             <div class="hamburger" v-on:click="toggleColapse()" >
                 <div id="bar1"></div>
@@ -36,7 +37,7 @@ export default {
 
         }, 
           
-        detectmob() { 
+        detectmobile() { 
         if( navigator.userAgent.match(/Android/i)
             || navigator.userAgent.match(/webOS/i)
             || navigator.userAgent.match(/iPhone/i)
@@ -54,24 +55,48 @@ export default {
         
     },
     created(){
-        //this.detectmob();         
+        this.detectmobile();         
     },   
     
 }
 </script>
 <style lang="scss" scoped>
+ @media screen and (max-width: 768px) {
+    .menu a{
+        display: block !important;
+        width: 100% !important;  
+        text-align: center;
+        position: relative !important;
+        overflow: hidden;
+        height: 2em ;
+    }
+    .menu .hamburger{
+        display: block;
+        cursor: pointer;    
+        margin-left:auto; 
+        margin-right: 2%;   
+        width: 40px;  
+        }
+    li{
+    display: block;
+    float: none;
+    width: 100% !important;   
+}  
+ }
 
 a{
     transition-duration: 0.8s;    
 }
 li{
-    display: inline;
+    display: block;
+    float: left;
+    width: 25%;   
 }
 .colapsed a{
     height: 0px !important;
     overflow: hidden;
 }
-.mobile a{
+.mobile li{
     display: block;
     width: 100%;  
     text-align: center;
@@ -79,9 +104,9 @@ li{
     overflow: hidden;
     height: 2em ;
 }
-
 .mobile .hamburger{
     display: block;
+
     cursor: pointer;    
     margin-left:auto; 
     margin-right: 2%;    
@@ -118,7 +143,7 @@ li{
     text-decoration: none;
     color: inherit;
     position: relative;
-    margin-right: 44px; 
+    //margin-right: 44px; 
 }
 .change #bar1 {    
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);

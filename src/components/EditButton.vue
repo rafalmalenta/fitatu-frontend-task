@@ -1,5 +1,5 @@
 <template>
-    <button v-on:click="handleClick">Edytuj</button>
+    <button v-on:click="handleClick">Edit</button>
 </template>
 <script>
 export default {
