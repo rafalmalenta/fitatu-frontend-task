@@ -1,5 +1,5 @@
 <template>
-    <div v-if="rowOrForm == 'form'||rowOrForm=='row'" class="page employees-list" >
+    <div class="page employees-list" >
         <h1 class="employees-list__header">Employees</h1>
         <div v-if="employeeStore.loading" class="employees-list__loading">Loading...</div>        
         <table v-else class="employees-list__list">
@@ -33,19 +33,18 @@
                     <input type="text" name="email" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.email'  />
                     <div v-else><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></div>
                 <td>
-                    <div v-if="rowOrForm=='row'">
-                        <EditButton v-if="employeeStore.employeeToEdit!=employee.id" v-bind="employee" v-on:editEmployee="editEmployee"/>
-                        <div v-else class="buttonWrapper">
-                            <button class="save" v-on:click=saveData(employee.id)>Save</button>
-                            <button class="cancel" v-on:click='employeeStore.employeeToEdit=null'>Cancel</button>
-                        </div>
-                    </div>
-                    <button v-on:click="formularz(employee)" v-else-if="rowOrForm=='form'">Edit</button>    
+                    <EditButton                         
+                        v-bind="{employee, rowOrForm}"
+                        v-on:editEmployee="editEmployee"
+                        v-on:saveData="saveData"
+                        v-on:cancel="clear"
+                        v-on:form ="formularz"
+                    />
                 </td>
             </tr>
         </table>        
     </div>
-    <Component404 v-else/>
+    
 </template>
 <script>
     import axios from 'axios';
@@ -96,13 +95,7 @@
         background-color: green;
         border-radius: 12px
     }
-    .buttonWrapper
-    {
-        width: 100%;
-    }
-    button{
-        width: 100%;
-    }
+   
 
     .employees-list {
         &__header {
