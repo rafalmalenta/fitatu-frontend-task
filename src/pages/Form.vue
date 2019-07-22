@@ -46,6 +46,12 @@
 </script>
 
 <style lang="scss" scoped>
+ @media screen and (max-width: 768px) {
+    div{
+    width: 70% !important;
+    margin: 0px auto;
+    }
+ }
 div{
     width: 30%;
     margin: 0px auto;
