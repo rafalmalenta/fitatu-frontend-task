@@ -11,23 +11,25 @@
                 <th>Email</th>
                 <th>Edycja</th>
             </tr>
-            <tr v-bind:key="employee.id" v-for="employee in employeeStore.employees" class="employees-list__list-row">
-                <td>{{employee.id}}</td>
-                <td>
+            <tr  v-bind:key="employee.id" v-for="employee in employeeStore.employees" class="employees-list__list-row">
+                <td data-label="id:">
+                    {{employee.id}}
+                </td>
+                <td data-label="name:">
                     <input type="text" name="name" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.name' />
                     <div v-else> {{employee.name}}</div>
                 </td>
-                <td>
+                <td data-label="address:">
                     <input type="text" name="street" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.address.street'/>
                     <input type="text" name="suite" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.address.suite' />
                     <input type="text" name="city" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.address.city' />
                     <div v-else>{{employee.address.street}} {{employee.address.suite}} {{employee.address.city}}</div>
                 </td>
-                <td>
+                <td data-label="phone:">
                     <input type="text" name="phone" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.phone' />
                     <div v-else>{{employee.phone}}</div>
                 </td>
-                <td>
+                <td data-label="email:">
                     <input type="text" name="email" v-if="employeeStore.employeeToEdit==employee.id" :placeholder='employee.email'  />
                     <div v-else><a :href="`mailto:${ employee.email }`">{{employee.email}}</a></div>
                 <td>
@@ -85,6 +87,7 @@
 
 </script>
 <style lang="scss" scoped>
+
     button.cancel{
         background-color: red;
         border-radius: 12px
@@ -103,6 +106,7 @@
 
     .employees-list {
         &__header {
+            z-index: 3;
             font-size: 20px;
             padding: 0 0 10px;
         }
@@ -132,6 +136,60 @@
 
             td {
                 padding: 8px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .employees-list {
+                &__header {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    padding: 0;
+                }
+
+                &__list {
+                    border: 0;
+                }
+
+                &__list-header {
+                    border: none;
+                    clip: rect(0 0 0 0);
+                    height: 1px;
+                    margin: -1px;
+                    overflow: hidden;
+                    padding: 0;
+                    position: absolute;
+                    width: 1px;
+                }
+
+                &__list-row {
+                    border-bottom: 3px solid #ddd;
+                    display: block;
+                    margin-bottom: .625em;
+                    box-shadow: 0.125rem 0.125rem 0.625rem #aaaaaa;
+
+                    td {
+                        border-bottom: 1px solid #ddd;
+                        display: block;
+                        font-size: .81rem;
+                        text-align: right;
+
+                        input {
+                            font-size: 1.2rem;
+                            margin-top:0.250rem;
+                        }
+
+                        &:before {
+                            content: attr(data-label);
+                            float: left;
+                            text-transform: uppercase;
+                            margin-left: 2px;
+                        }
+
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                    }
+                }
             }
         }
     }
