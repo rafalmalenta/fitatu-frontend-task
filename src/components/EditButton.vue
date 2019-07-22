@@ -70,7 +70,6 @@ export default {
     }
     button.save{
         background-color: green;
-        
     }
     button.edit{
         background-color: rgb(168, 168, 216);
